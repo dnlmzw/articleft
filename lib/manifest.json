@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "[[name]]",
+  "version": "[[version]]",
+  "description": "[[description]]",
+
+  "homepage_url": "http://www.dnlmzw.dk/",
+  
+  "icons": {
+    "16" : "images/icon-16x16@2x.png",
+    "48" : "images/icon-48x48@2x.png",
+    "128" : "images/icon-128x128@2x.png"
+  },
+
+  "permissions": ["activeTab"],
+
+  "browser_action": {
+    "default_icon": "images/icon-16x16@2x.png",
+    "default_title": "[[description]]"
+  }
+
+}
