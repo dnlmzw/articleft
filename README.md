@@ -9,4 +9,4 @@ Detect the amount of minutes left in an article you're reading in a browser.
 Usage
 -----
 
-Create a bookmark in your preffered browser and make the address point to "javascript:[script-in-'dist/main.js']".
+Create a bookmark in your prefered browser and make the address point to "javascript:[script-in-'dist/main.js']".
