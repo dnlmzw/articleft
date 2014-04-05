@@ -1,2 +1,5 @@
+# Files
+.DS_Store
+
 # Grunt
 node_modules
