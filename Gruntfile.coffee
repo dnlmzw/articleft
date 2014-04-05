@@ -19,13 +19,35 @@ module.exports = (grunt) ->
                 src: '*.coffee'
                 dest: '<%= config.src %>/scripts/'
                 ext: '.js'
+
+        uglify:
+            dist:
+                expand: true
+                cwd: '<%= config.src %>/scripts/'
+                src: '*.js'
+                dest: '<%= config.dist %>'
+
         watch:
             coffee:
                 files: ['<%= config.lib %>/scripts/*.coffee']
                 tasks: ['coffee']
     
-    grunt.registerTask 'default', [
+    # ###
+    # Development
+    grunt.registerTask 'dev', [
         'coffee'
+        'watch'
     ]
 
-    #grunt.loadNpmTasks name
+    # ###
+    # Distribution
+    grunt.registerTask 'dist', [
+        'coffee'
+        'uglify'
+    ]
+
+    # ###
+    # Default
+    grunt.registerTask 'default', [
+        'dev'
+    ]

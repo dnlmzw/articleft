@@ -1,5 +1,5 @@
 # ###
-# Script to include
+# Script to bookmark in testing purposes
 # var js = document.createElement("script"); js.type = "text/javascript"; js.src = 'http://localhost/scripts/main.js'; document.body.appendChild(js);
 
 # Articleft object
@@ -55,11 +55,11 @@ articleft =
       topParagraphNumber = 0;
 
       # Variable containing reference to all <p> tags
-      paragraphs = $('p,blockquote,h1,h2,h3,h4,h5,h6', mainContainer)
+      textElements = $('h1,h2,h3,h4,h5,h6,p,blockquote', mainContainer)
 
       # Loop through all the <p> tags to determine 
       # which has the closest position to the scrolltop
-      paragraphs.each (i) ->
+      textElements.each (i) ->
         
         # We test to see if the position of the <p> tag
         # is bigger than the body scrolltop
@@ -82,12 +82,12 @@ articleft =
       # Loop through the <p> tags, starting from the number
       # which was defined to be the paragraph the scrolltop
       # had reached
-      for num in [topParagraphNumber..paragraphs.length-1]
+      for num in [topParagraphNumber..textElements.length-1]
         # Add number of words in the current <p> tag to
         # the amount of words left in the article
-        # console.log paragraphs.eq(num).text().split(' ').length
+        # console.log textElements.eq(num).text().split(' ').length
 
-        wordsLeft += paragraphs.eq(num).text().split(' ').length
+        wordsLeft += textElements.eq(num).text().split(' ').length
 
       mins = articleft.getFormattedMinutes(wordsLeft / articleft.readingAverage.low)
 
@@ -109,8 +109,8 @@ articleft =
         'display: table-cell;' +
         'vertical-align: middle;' +
         'text-align: center;' + 
-        'font-size: 60px;' +
-        'font-family: Georgia;'
+        'font-size: 50px;' +
+        'font-family: Helvetica;'
 
       displayer = $ '<div style="' + divCss + '"><span style="' + spanCss + '">' + mins + '</span></div>'
       
@@ -118,7 +118,7 @@ articleft =
       $('body').append displayer
 
       # Fade out and delete
-      displayer.delay(500).fadeOut 350, ->
+      displayer.delay(1000).fadeOut 350, ->
         displayer.remove()
 
       #alert articleft.message.first + articleft.getFormattedMinutes(wordsLeft / articleft.readingAverage.low) + articleft.message.last
