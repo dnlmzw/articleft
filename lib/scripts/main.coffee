@@ -39,7 +39,7 @@ articleft =
       # Loop through the parent of all <p> nodes
       # to determine which container has the most <p> tags
       $('p').parent().each ->
-        
+
         # Is the number of <p> tags in this element higher than the previous?
         if($('p',this).length > max)
           # Set max amount of <p> tags in the current container
