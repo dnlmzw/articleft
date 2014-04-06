@@ -59,7 +59,7 @@ module.exports = (grunt) ->
         uglify:
             dist:
                 expand: true
-                cwd: '<%= config.src %>/scripts/'
+                cwd: '<%= config.src %>'
                 src: '*.js'
                 dest: '<%= config.dist %>'
 
