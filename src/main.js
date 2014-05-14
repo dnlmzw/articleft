@@ -1,5 +1,7 @@
 (function() {
-  var articleft, getFormattedBelowTen, getFormattedMinutes, showMinuteDisplay;
+  var $, articleft, getFormattedBelowTen, getFormattedMinutes, showMinuteDisplay;
+
+  $ = null;
 
   articleft = {
     debugging: false,
@@ -11,18 +13,16 @@
         js.type = "text/javascript";
         js.src = "//code.jquery.com/jquery-1.11.0.min.js";
         js.onload = function() {
-          return window.jQuery(document).ready(function() {
-            return articleft.ready(window.jQuery);
-          });
+          return window.jQuery(document).ready(articleft.ready);
         };
         return document.body.appendChild(js);
       } else {
-        return articleft.ready(window.jQuery);
+        return articleft.ready();
       }
     },
-    ready: function($) {
+    ready: function() {
       var formatedMinutes, mainContainer, max, num, scrolltop, textElements, topParagraphNumber, wordsLeft, _i, _ref;
-      console.log('jQuery', $);
+      $ = window.jQuery;
       max = 0;
       mainContainer = null;
       $('p').parent().each(function() {

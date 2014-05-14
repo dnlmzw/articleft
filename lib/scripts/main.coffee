@@ -2,6 +2,8 @@
 # For testing purposes: Make a bookmark that includes this script
 # javascript:if(window.articleft == null){var js = document.createElement("script"); js.type = "text/javascript"; js.src = 'http://localhost/main.js'; document.body.appendChild(js)}else{articleft.init();};
 
+$ = null
+
 # Articleft object
 articleft =
 
@@ -20,23 +22,21 @@ articleft =
       js.type = "text/javascript";
       js.src = "//code.jquery.com/jquery-1.11.0.min.js"
       js.onload = ->
+
         # Document ready
-        window.jQuery(document).ready ->
-          articleft.ready window.jQuery
+        window.jQuery(document).ready articleft.ready
 
       # Load jQuery
       document.body.appendChild(js);
     else
-      articleft.ready window.jQuery
-
-
-    #$ = jQuery.noConflict()
+      articleft.ready()
 
   # ###
   # On jQuery document ready
-  ready: ($) ->
+  ready: ->
 
-    console.log 'jQuery', $
+    # Define jQuery object
+    $ = window.jQuery;
 
     # Define max
     # ~ highest number of <p> tags in a container
@@ -136,7 +136,6 @@ showMinuteDisplay = (formatedMinutes) ->
     'border-radius: 10px;' +
     'z-index: 99999999;'
 
-
   spanCss =
     'color: white;' +
     'display: table-cell;' +
@@ -150,6 +149,7 @@ showMinuteDisplay = (formatedMinutes) ->
   
   # Append minuteDisplay to DOM
   $('body').prepend minuteDisplay
+
 
 ###showOverviewDisplay = (textElements) ->
 
